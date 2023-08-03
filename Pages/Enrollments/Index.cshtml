@@ -1,0 +1,61 @@
+﻿@page
+@model KUSYS_Demo.Pages.Enrollments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Enrollments</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollment[0].Course.CourseCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollment[0].Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollment[0].Student.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollment[0].Student.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollment[0].Student.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Enrollment)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseCode)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.StudentId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FirstName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.EnrollmentId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EnrollmentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
